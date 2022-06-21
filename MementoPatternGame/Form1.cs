@@ -63,5 +63,18 @@ namespace MementoPatternGame
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 game15.SaveToFile(saveFileDialog.FileName);
         }
+
+        private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "GAME15|*.gm15";
+            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                game15 = new Game15();
+                game15Graphics = new Game15Graphics(pictureBox1.CreateGraphics(), game15);
+                game15.LoadFromFile(openFileDialog.FileName);
+                game15Graphics.Draw();
+            }
+        }
     }
 }

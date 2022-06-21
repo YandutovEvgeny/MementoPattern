@@ -63,6 +63,15 @@ namespace MementoPatternGame
                 Area[y, x] = 0;
             }
         }
+        public void LoadFromFile(string fileName)
+        {
+            Game15Memento game15Memento = new Game15AdapterFromFile(fileName);
+            N = game15Memento.N;
+            Count = game15Memento.Count;
+            Area = game15Memento.Area;
+            game15History = new Game15History();
+            game15History.History.Add(game15Memento);
+        }
         public void SaveToFile(string fileName)
         {
             FileStream fileStream = new FileStream(fileName, FileMode.OpenOrCreate);
